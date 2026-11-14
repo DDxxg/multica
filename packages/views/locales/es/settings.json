@@ -277,7 +277,7 @@
     },
     "own": {
       "title": "Crea el tuyo",
-      "description": "Importa un tema como .zip o carpeta, o empieza con una copia del actual."
+      "description": "Pide a cualquier agente que cree uno en un chat o una tarea, importa un tema como .zip o carpeta, o empieza con una copia del actual."
     },
     "tools": {
       "duplicate": "Duplicar «{{name}}» como tema nuevo",
@@ -341,8 +341,8 @@
     },
     "content_size": {
       "title": "Tamaño de letra",
-      "description": "Solo el texto del contenido; la interfaz mantiene su tamaño.",
-      "follow": "Igual que la interfaz ({{size}} px)"
+      "description": "Solo el texto del contenido. Por defecto, igual que la interfaz.",
+      "follow": "Seguir el tamaño de la interfaz"
     },
     "content_leading": {
       "title": "Interlineado",
@@ -355,7 +355,7 @@
     },
     "density": {
       "title": "Densidad",
-      "description": "Altura de las filas en listas de incidencias y búsqueda.",
+      "description": "Altura de las filas en listas de incidencias, búsqueda y la barra lateral, y espaciado en el tablero.",
       "compact": "Compacta",
       "default": "Predeterminada",
       "comfortable": "Amplia"
@@ -393,6 +393,7 @@
     "reserved_error": "Reservado por el navegador o la ventana de escritorio.",
     "send_error": "Enviar solo puede usar Enter o Mod+Enter.",
     "unsafe_error": "Esta tecla interferiría con la escritura o la navegación básica del teclado.",
+    "unrecognized_error": "No se puede grabar esta combinación. Prueba con otra.",
     "send_enter_hint": "Shift+Enter inserta un párrafo, continúa una lista o añade un salto de línea en un bloque de código.",
     "categories": {
       "general": "General",
@@ -490,6 +491,10 @@
       "goSettings": {
         "label": "Ir a Configuración",
         "description": "Abre la configuración del espacio de trabajo."
+      },
+      "voiceInput": {
+        "label": "Entrada de voz",
+        "description": "Dicta en el último editor que usaste. Mantén pulsado para hablar."
       }
     },
     "fixed": {
@@ -586,7 +591,8 @@
       "apps": "Apps conectadas",
       "channels": "Mensajería",
       "code": "Código",
-      "workflows": "Flujos de trabajo"
+      "workflows": "Flujos de trabajo",
+      "voice_input": "Entrada de voz"
     },
     "groups": {
       "personal": "Personal",
@@ -856,6 +862,9 @@
       "agent_activity": {
         "label": "Actividad de agentes",
         "description": "Cuando falla una ejecución de agente"
+      },
+      "chat_replies": {
+        "label": "Incluir respuestas del chat"
       }
     },
     "system": {
@@ -864,7 +873,7 @@
     },
     "browser": {
       "label": "Notificaciones del navegador",
-      "hint": "Permite que este navegador muestre avisos de notificación para nuevos elementos de la bandeja.",
+      "hint": "Permite que este navegador muestre avisos para las notificaciones de la bandeja de entrada y las respuestas del chat.",
       "enable": "Activar",
       "granted": "Este navegador puede mostrar avisos de notificación.",
       "denied": "Bloqueado por tu navegador. Activa las notificaciones para este sitio en la configuración del navegador.",
@@ -1374,7 +1383,9 @@
     "github_load_more": "Cargar más",
     "github_selected_count": "{{count}} seleccionados",
     "github_cancel": "Cancelar",
-    "github_import": "Añadir repositorios",
+    "github_import": "Añadir {{count}} repositorios",
+    "github_import_one": "Añadir {{count}} repositorio",
+    "github_import_other": "Añadir {{count}} repositorios",
     "save": "Guardar",
     "saving": "Guardando...",
     "saved_hint": "Todos los cambios guardados",
@@ -1408,7 +1419,10 @@
       "close_others": "Cerrar las demás pestañas",
       "open_window": "Abrir en ventana nueva",
       "new": "Pestaña nueva",
-      "pinned_name": "{{title}} (fijada)"
+      "pinned_name": "{{title}} (fijada)",
+      "copy_link": "Copiar enlace",
+      "link_copied": "Enlace copiado",
+      "close_right": "Cerrar las pestañas a la derecha"
     },
     "updates": {
       "title": "Actualizaciones",
@@ -1607,7 +1621,40 @@
     "status_unknown": "Estado no disponible"
   },
   "channels": {
-    "breadcrumb": "Migas de pan"
+    "breadcrumb": "Migas de pan",
+    "add": "Añadir canal de mensajería",
+    "connect": "Conectar",
+    "disconnect": "Desconectar",
+    "open": "Abrir",
+    "normal": "Conectado",
+    "waiting_message": "Esperando el primer mensaje",
+    "disconnected": "Desconectado",
+    "find_me": "Encuéntrame en {{platform}}",
+    "manage": "Gestionar {{platform}}",
+    "last_message": "Último mensaje: {{time}}",
+    "ask_admin": "Pide ayuda a un administrador",
+    "unavailable": "Conexión no disponible",
+    "permissions_title": "Quién puede conectar",
+    "owner_or_admin": "Propietario del agente o administrador del espacio",
+    "admin_only": "Solo administradores del espacio",
+    "connect_title": "Conectar canal de mensajería",
+    "choose_description": "Elige un agente y una plataforma.",
+    "authorize_description": "Conectar {{agent}} a {{platform}}.",
+    "agent_label": "Agente",
+    "choose_agent": "Elegir agente",
+    "platform_label": "Plataforma",
+    "region_label": "Región",
+    "method_label": "Método de conexión",
+    "feishu": "Feishu (China)",
+    "lark": "Lark (internacional)",
+    "setup_guide": "Guía de configuración",
+    "connection_changed": "Esta conexión ya no está disponible. Cierra esta ventana y vuelve a intentarlo.",
+    "connect_failed": "No se pudo conectar el bot.",
+    "connect_success": "Canal de mensajería conectado.",
+    "disconnect_failed": "No se pudo desconectar el bot.",
+    "disconnect_title": "¿Desconectar el canal de mensajería?",
+    "disconnect_description": "Este agente dejará de recibir mensajes de {{platform}}.",
+    "agent_unavailable": "Agente no disponible"
   },
   "code": {
     "github_actions": "Acciones de GitHub",
@@ -1830,6 +1877,101 @@
       "cancel": "Cancelar",
       "admin_required": "Un administrador puede restablecer el acceso.",
       "account_link": "Esta cuenta conserva restricciones. Restablece el acceso en Apps conectadas."
+    }
+  },
+  "voice_input": {
+    "description": "Dicta en el chat, los comentarios y las respuestas. La voz se transcribe en este ordenador y nunca sale de él.",
+    "model_title": "Modelo de voz",
+    "model_hint": "Los modelos se ejecutan en este ordenador. Descarga uno o cambia entre los que tienes.",
+    "engine_unavailable": "La transcripción en el dispositivo no está disponible en este ordenador.",
+    "input_title": "Entrada",
+    "shortcut": {
+      "title": "Atajo",
+      "hint": "Funciona siempre que haya un editor en pantalla, aunque no tenga el foco.",
+      "change": "Cambiar",
+      "unassigned": "Sin asignar"
+    },
+    "activation": {
+      "title": "Activación",
+      "auto": "Tocar o mantener",
+      "toggle": "Tocar",
+      "hold": "Mantener",
+      "hints": {
+        "auto": "Toca para empezar y vuelve a tocar para insertar. Mantén pulsado para hablar y suelta para insertar.",
+        "toggle": "Toca para empezar y vuelve a tocar para insertar.",
+        "hold": "Mantén pulsado para hablar y suelta para insertar."
+      }
+    },
+    "recognition_title": "Reconocimiento",
+    "language": {
+      "title": "Idioma hablado",
+      "hint": "La detección automática sirve para casi todo. Elige un idioma si las frases cortas salen en otro.",
+      "auto": "Detección automática"
+    },
+    "fillers": {
+      "title": "Quitar muletillas",
+      "hint": "Elimina “eh”, “em” y vacilaciones similares."
+    },
+    "vocabulary": {
+      "title": "Vocabulario",
+      "hint": "Nombres y términos que quieres escritos a tu manera, como productos o compañeros. Hasta {{max}}.",
+      "placeholder": "Añadir una palabra",
+      "remove": "Quitar {{word}}"
+    },
+    "microphone_title": "Micrófono",
+    "device": {
+      "title": "Dispositivo de entrada",
+      "default": "Predeterminado del sistema",
+      "unnamed": "Micrófono {{index}}",
+      "permission_hint": "Prueba el micrófono una vez para ver los nombres de los dispositivos."
+    },
+    "test": {
+      "title": "Probar micrófono",
+      "hint": "Habla para comprobar el nivel. No se graba nada.",
+      "blocked": "El acceso al micrófono está bloqueado. Permítelo en el navegador o en la configuración del sistema.",
+      "start": "Probar",
+      "stop": "Detener"
+    },
+    "history": {
+      "title": "Historial",
+      "description": "Las grabaciones y su texto se quedan en este ordenador y nunca se suben. Una que falló o se interrumpió puede transcribirse de nuevo desde su audio.",
+      "keep": {
+        "title": "Conservar historial",
+        "hint": "Cuánto tiempo se guardan las grabaciones en este ordenador.",
+        "options": {
+          "off": "No conservar",
+          "1d": "1 día",
+          "7d": "7 días",
+          "30d": "30 días",
+          "forever": "Siempre"
+        }
+      },
+      "clear": "Borrar todo",
+      "clear_dialog": {
+        "title": "¿Borrar el historial de voz?",
+        "description": "Se eliminarán todas las grabaciones y transcripciones guardadas en este ordenador.",
+        "cancel": "Cancelar"
+      },
+      "empty": "Tus dictados aparecerán aquí.",
+      "off": "El historial está desactivado. Las nuevas grabaciones no se guardan.",
+      "today": "Hoy",
+      "yesterday": "Ayer",
+      "status": {
+        "transcribing": "Transcribiendo…",
+        "failed": "La transcripción falló",
+        "interrupted": "Interrumpida antes de transcribirse"
+      },
+      "actions": {
+        "play": "Reproducir grabación",
+        "pause": "Pausar",
+        "retranscribe": "Transcribir de nuevo",
+        "copy": "Copiar texto",
+        "delete": "Eliminar"
+      },
+      "copied": "Copiado",
+      "copy_failed": "No se pudo copiar",
+      "retry_failed": "No se pudo transcribir esta grabación",
+      "show_more": "Mostrar más"
     }
   }
 }
